@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+{% if room %}
+  <div class="card border-secondary mb-3">
+    <div class="card-header">
+      {{room.name}}
+    </div>
+    <div class="card-body">
+      <p>Capacity: {{ room.capacity }}</p>
+      <p>Projector:
+        {% if room.is_projector %}
+          {{ room.is_projector }}
+        {% else %}
+          False
+        {% endif %}
+      </p>
+    </div>
+    <hr>
+    <form method="post" style="display:inline!important;">{% csrf_token %}
+      <input type="hidden" name="id" value="{{ room.id }}">
+      <input type="date" name="date" value="{{ date }}">
+      <button class="btn btn-outline-info btn-sm" name="action" value="check" type="submit">Check availability</button>
+    </form>
+  </div>
+{% endif %}
+
+{% endblock content %}

@@ -1,0 +1,12 @@
+body {
+  padding-top: 100px;
+  background-color: rgba(189, 189, 189, 0.3);
+}
+
+table {
+    border-radius: 5px;
+}
+
+.bg-violet {
+  background-color: rgba(81, 45, 168, 1)
+}

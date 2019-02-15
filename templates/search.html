@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="card border-secondary mb-3">
+  <div class="card-header">
+    Rooms
+  </div>
+  <div class="card-body">
+    <table class="table table-sm table-bordered">
+      <thead class="thead-light">
+        <tr>
+            <th>Name</th>
+            <th>Capacity</th>
+            <th>Is projector</th>
+            <th>Reservation</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for room in rooms %}
+            <tr>
+              <td><a href="{% url 'roomreservation-room_details' room.id %}">{{room.name}}</a></td>
+              <td>{{room.capacity}}</td>
+              <td>{{room.is_projector}}</td>
+              <td>
+                <form method="post" style="display:inline!important;" action="{% url 'roomreseration-room_reservation' room.id date%}">{% csrf_token %}
+                  <button class="btn btn-outline-success btn-sm" name="action" value="book" type="submit">Book</button>
+                </form>
+              </td>
+          </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock content %}
