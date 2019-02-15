@@ -25,7 +25,7 @@ CREATE DATABASE contactlist;
 
 Add some dummy data to se hows it works:
 ```bash
-pg_dump -U postgres -h localhost -W contactlist > db_dump.sql
+pg_dump -U postgres -h localhost -W contactlist < db_dump.sql
 ```
 
 ## Contributing
