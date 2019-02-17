@@ -20,5 +20,6 @@ from roomreservation.views import go_home
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('reservation/', include('roomreservation.urls')),
+    path('contacts/', include('contacts.urls')),
     path('', go_home),
 ]
