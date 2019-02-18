@@ -1,7 +1,6 @@
 {% extends "contact_layout.html" %}
 {% block content %}
 {% load crispy_forms_tags %}
-<div class="container">
   <div class="row">
     <div class="col-sm">
       {% if contacts %}
@@ -27,7 +26,7 @@
                           <button class="btn btn-outline-danger btn-sm" name="action" value="delete" type="submit">X</button>
                         </form>
                       </td>
-                      <td><a href="">{{contact.name}}</a></td>
+                      <td><a href="{% url 'contactlist-contact' id=contact.id %}">{{contact.name}}</a></td>
                       <td>{{contact.surname}}</td>
                   </tr>
                   {% endfor %}
@@ -44,8 +43,11 @@
         </div>
         <div class="card-body">
           <div class="container">
-            <form class="form-group" enctype="multipart/form-data" action="">{% csrf_token %}
-              {{ form|crispy }}
+            <form method="post" class="form-group" enctype="multipart/form-data">{% csrf_token %}
+              <label>Name</label>
+              <p>{{ form.name }}</p>
+              <label>Last Name</label>
+              <p>{{ form.surname }}</p>
               <hr>
               <button class="btn btn-outline-primary btn-sm" name="action" value="add" type="submit">New Contact</button>
             </form>
@@ -53,7 +55,5 @@
         </div>
       </div>
     </div>
-
   </div>
-</div>
 {% endblock content %}

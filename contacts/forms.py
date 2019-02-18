@@ -6,10 +6,11 @@ from .models import Person, Email, Address, Group, Phone, PHONE_CHOICES, EMAIL_C
 class PersonForm(forms.ModelForm):
     name = forms.CharField(label='Name')
     surname = forms.CharField(label='Last Name')
-    description = forms.CharField(widget=forms.Textarea,
+    description = forms.CharField(required=False, widget=forms.Textarea,
                                   label='Contact Description')
-    photo = forms.ImageField(validators=[FileExtensionValidator(allowed_extensions=['png', 'jpeg'])],
-                             label='Contact Photo')
+    photo = forms.ImageField(required=False, validators=[FileExtensionValidator(allowed_extensions=['png', 'jpg'])],
+                             label='Contact Photo',
+                             help_text="Allowed extensions: jpg, png.")
 
     class Meta:
         model = Person

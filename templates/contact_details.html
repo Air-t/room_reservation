@@ -1,0 +1,41 @@
+{% extends "contact_layout.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% if contact %}
+  <div class="content-section">
+    <div class="media">
+      <img class="rounded-circle account-img" src="{{ contact.photo.url }}" alt="user_img">
+      <div class="media-body">
+        <h2 class="account-heading">{{ contact.name }} {{ contact.surname }}</h2>
+      </div>
+    </div>
+    <hr>
+    {{ form|crispy }}
+  </div>
+{% endif %}
+{% endblock content %}
+
+
+<div class="row">
+  <div class="col-sm">
+    <div class="content-section">
+      <div class="media">
+        <img class="rounded-circle account-img" src="{{ contact.photo.url }}" alt="user_img">
+        <div class="media-body">
+          <h2 class="account-heading">{{ contact.name }} {{ contact.surname }}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm">
+    <div class="card border-secondary mb-3">
+      <div class="card-header">
+        Update contact data
+      </div>
+      <div class="card-body">
+        {{ form|crispy }}
+      </div>
+    </div>
+  </div>
+</div>
